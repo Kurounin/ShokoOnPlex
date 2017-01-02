@@ -16,5 +16,11 @@
         "type": "text",
         "label": "Search Limit",
         "default": "20"
+    },
+    {
+        "id": "episodeNumber",
+        "type": "bool",
+        "label": "Display episode number",
+        "default": "false"
     }
 ]

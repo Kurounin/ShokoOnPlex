@@ -1,6 +1,7 @@
 
 import datetime
 import os
+import re
 from lxml import etree
 import urllib2
 
@@ -144,6 +145,10 @@ def Proxy(url,includeExtras='0',includeRelated='0',includeRelatedCount='0',check
 	Response.Headers['Content-type']="text/xml;charset=utf-8"
 	url = RedirectUrlIfNeeeded(url);
 	req = HTTP.Request(url=url,timeout=240)
+	
+	if Prefs['episodeNumber']:
+		return re.sub(r'type="episode" title="([^"]+)" (.*) EpisodeNumber="(\d+)"', r'type="episode" title="\3. \1" \2 EpisodeNumber="\3"', req.content)
+		
 	return req.content
 
 
